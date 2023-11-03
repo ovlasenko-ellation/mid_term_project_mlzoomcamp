@@ -8,10 +8,9 @@ model_file = 'model.bin'
 
 def load(model_file: str):
     with open(model_file, 'rb') as f_in:
-        return pickle.load(f_in)
+         dv, rf = pickle.load(f_in)
+         return dv, rf
 
-dv = load('dv.bin')
-model = load('model.bin')
 
 app = Flask('get-traffic')
 
