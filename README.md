@@ -105,7 +105,9 @@ I used AWS Elastic Beanstalk for cloud deploy
 
 The following steps for configuration:
 pipenv install awsebcli --dev
+
  pipenv shell
+ 
  eb init -p docker  -r us-west-2 traffic-prediction (change teh region for yours)
 
 Create environment on AWS to deploy model
