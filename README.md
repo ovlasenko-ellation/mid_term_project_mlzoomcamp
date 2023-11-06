@@ -116,7 +116,7 @@ Run the command to have a prediction:
 python get_input.py
 
 Screenshot of a model running on the Cloud and returning different predictions:
-![AWS](images/Cloud_running_ther input.png)
+![AWS](images/Cloud_running_input.png)
 
 
 
