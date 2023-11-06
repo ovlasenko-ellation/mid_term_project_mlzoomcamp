@@ -10,14 +10,14 @@ def load(model_file: str):
     with open(model_file, 'rb') as f_in:
          dv, rf = pickle.load(f_in)
          return dv, rf
-
+dv, rf = load(model_file)
 
 app = Flask('get-traffic')
 
 
 @app.route('/predict', methods=['POST'])
 
-def predct(input):
+def predct():
     input = request.get_json()
     x = dv.transform([input])
     y = rf.predict(x)
@@ -31,6 +31,7 @@ def predct(input):
     return jsonify(result)
 
 if __name__ == "__main__":
+
     app.run(debug=True, host='0.0.0.0', port=9696)
 
 #My initial file

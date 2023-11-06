@@ -133,83 +133,6 @@ import xgboost as xgb
 
 # # Using Random Forest for training the model
 
-print("Training random forest model on training datap")
-# In[491]:
-
-
-rf = RandomForestClassifier(n_estimators=100, max_depth=None, random_state=1)
-rf.fit(X_train, y_train)
-y_pred = rf.predict(X_val)
-accuracy = accuracy_score(y_val, y_pred)
-accuracy
-
-
-# # Finding the optimal number of estimators 
-
-# In[492]:
-
-
-scores = []
-
-for n in range(10, 201, 10):
-    rf = RandomForestClassifier(n_estimators=n, max_depth=None, random_state=1)
-    rf.fit(X_train, y_train)
-    y_pred = rf.predict(X_val)
-    accuracy = accuracy_score(y_val, y_pred)
-    scores.append(( n, accuracy))
-
-
-# In[493]:
-
-
-df_scores = pd.DataFrame(scores, columns=['n_estimators', 'accuracy'])
-
-
-# In[494]:
-
-
-plt.plot(df_scores.n_estimators, df_scores.accuracy)
-
-
-# In[495]:
-
-
-scores = []
-for d in  [None, 5, 10, 15]:
-    for n in range(10, 201, 10):
-        rf = RandomForestClassifier(n_estimators=n, max_depth=d, random_state=1)
-        rf.fit(X_train, y_train)
-        y_pred = rf.predict(X_val)
-        accuracy = accuracy_score(y_val, y_pred)
-        scores.append((d, n, accuracy))
-
-
-# In[496]:
-
-
-df_scores = pd.DataFrame(scores, columns=['max_depth','n_estimators', 'accuracy'])
-
-
-# In[497]:
-
-
-for d in [None, 5, 10, 15]:
-    df_subset = df_scores[df_scores.max_depth == d]
-
-    plt.plot(df_subset.n_estimators, df_subset.accuracy,
-             label='max_depth=%s' % d)
-
-plt.legend()
-
-
-# In[498]:
-
-
-df_scores_pivot = df_scores.pivot(index='n_estimators', columns=['max_depth'], values=['accuracy'])
-df_scores_pivot.round(3)
-
-
-
 
 
 # # Training the final selected model
@@ -230,7 +153,7 @@ X_test = dv.transform(dicts_test)
 # In[505]:
 
 
-rf = RandomForestClassifier(n_estimators=80, max_depth=10, random_state=1)
+rf = RandomForestClassifier(n_estimators=80, max_depth=10, random_state=1, class_weight='balanced')
 rf.fit(X_full_train, y_full_train)
 y_pred = rf.predict(X_test)
 accuracy = accuracy_score(y_test, y_pred)

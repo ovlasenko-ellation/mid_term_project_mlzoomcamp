@@ -1,0 +1,10 @@
+numpy
+pandas
+matplotlib
+scikit-learn
+matplotlib
+seaborn
+xgboost
+jupyterlab
+gunicorn==21.2.0
+Flask==3.0.0
