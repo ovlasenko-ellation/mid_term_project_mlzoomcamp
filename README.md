@@ -101,5 +101,22 @@ Then once Docker is running you can run the script for sending input data and se
 ![Docker](images/Docker.png)
 
 ## Deployemnt 
-URL to the service you deployed or
-Video or image of how you interact with the deployed service
+I used AWS Elastic Beanstalk for cloud deploy 
+
+The following steps for configuration:
+pipenv install awsebcli --dev
+ pipenv shell
+ eb init -p docker  -r us-west-2 traffic-prediction (change teh region for yours)
+
+Create environment on AWS to deploy model
+eb create traffic-prediction-env
+
+Make sure get_input.py has host updated to the right link
+Run the command to have a prediction:
+python get_input.py
+
+Screenshot of a model running on the Cloud and returning different predictions:
+![AWS](images/Cloud_running_ther input.png)
+
+
+
