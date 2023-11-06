@@ -34,23 +34,3 @@ if __name__ == "__main__":
 
     app.run(debug=True, host='0.0.0.0', port=9696)
 
-#My initial file
-# model_file = 'model.bin'
-# with open(model_file, 'rb') as f_in:
-#     dv, rf = pickle.load(f_in)
-#
-# input = {
-#     'hour': 14,
-#     'minute': 00,
-#     'day_of_the_week': "Wednesday"
-# }
-#
-# def predct(input):
-#     x = dv.transform([input])
-#     y = rf.predict(x)
-#     return y
-#
-#
-# print('input: ', input)
-#
-

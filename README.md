@@ -98,7 +98,7 @@ docker run -p 8080:9696 predict:latest
 
 Then once Docker is running you can run the script for sending input data and see the traffic_prediction service response by running the command:
  python get_input.py
- 
+ ![Docker](../../Desktop/Docker.png)
 
 ## Deployemnt 
 URL to the service you deployed or
